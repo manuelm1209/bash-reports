@@ -1,7 +1,8 @@
 #!/bin/bash
 
-echo                                                      
-echo " @@@@@@@@@@     @@@  @@@@@@@    @@@   @@@@@@@   @@@@@@@@   
+echo
+function banner(){
+    echo " @@@@@@@@@@     @@@  @@@@@@@    @@@   @@@@@@@   @@@@@@@@   
  @@@@@@@@@@@   @@@@  @@@@@@@   @@@@  @@@@@@@@  @@@@@@@@@@  
  @@! @@! @@!  @@@!!    @@!    @@@!!  !@@       @@!   @@@@  
  !@! !@! !@!    !@!    !@!      !@!  !@!       !@!  @!@!@  
@@ -11,7 +12,8 @@ echo " @@@@@@@@@@     @@@  @@@@@@@    @@@   @@@@@@@   @@@@@@@@
  :!:     :!:    :!:    :!:      :!:  :!:       :!:    !:!  
  :::     ::     :::     ::      :::   ::: :::  ::::::: ::  
   :      :       ::     :        ::   :: :: :   : : :  :   "
-                                                        
+}                                                  
+banner                                                
 function endeavor(){
     echo
     echo "#####################"
@@ -69,7 +71,10 @@ while [ $OPCION -ne "5" ]; do
     echo "3- endeavorcampus.com"
     echo "4- mapadecapital.endeavorcampus.com"
     echo "5- SALIR"
-    read OPCION
+    echo
+    read -p "Tu selección: " OPCION
+    clear
+    banner
     if [ $OPCION = 1 ]; then
         endeavor
         campus
