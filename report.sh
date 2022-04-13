@@ -60,7 +60,7 @@ function mapa(){
 }
 EXIT=1
 OPCION="1"
-while [ $OPCION -ne "5" ]; do
+while [ "$OPCION" != "5" ]; do
     echo
     echo "#########################################################"
     echo "#########################################################"
@@ -75,15 +75,15 @@ while [ $OPCION -ne "5" ]; do
     read -p "Tu selección: " OPCION
     clear
     banner
-    if [ $OPCION == 1 ]; then
+    if [ "$OPCION" == "1" ]; then
         endeavor
         campus
         mapa
-    elif [ $OPCION == 2 ]; then
+    elif [ "$OPCION" == "2" ]; then
         endeavor
-    elif [ $OPCION == 3 ]; then
+    elif [ "$OPCION" == "3" ]; then
         campus
-    elif [ $OPCION == 4 ]; then
+    elif [ "$OPCION" == "4" ]; then
         mapa
     fi
 done
