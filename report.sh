@@ -38,7 +38,7 @@ function campus(){
         echo "############"
         echo "## CAMPUS ##"
         echo "############"
-        ssh -i ~/Documents/AWS/campus-2021/campus-2021.pem bitnami@52.7.82.253 'echo "## MEMERY INFO ##";free -h | grep "total"; free -h | grep "Mem:";echo;echo "## DISK INFO ##";df -h | grep "Filesystem" ;df -h | grep "/dev/xvda1 "'
+        ssh -i ~/Documents/AWS/campus-2021/campus-2021.pem bitnami@52.7.82.253 'echo "## MEMERY INFO ##";free -h | grep "total"; free -h | grep "Mem:";echo;echo "## DISK INFO ##";df -h | grep "Filesystem" ;df -h | grep "/dev/nvme0n1p1 "'
     else
     echo "ERROR: No se encuentra el llave privada para endeavorcampus.com en el directorio ~/Documents/AWS/campus-2021/".
     fi
@@ -53,10 +53,17 @@ function mapa(){
         echo "############"
         echo "## MAPA ##"
         echo "############"
-        ssh -i ~/Documents/AWS/mapa-capital/mapa-de-capital.pem bitnami@3.130.120.185 'echo "## MEMERY INFO ##";free -h | grep "total"; free -h | grep "Mem:";echo;echo "## DISK INFO ##";df -h | grep "Filesystem" ;df -h | grep "/dev/xvda1 "'
+        ssh -i ~/Documents/AWS/mapa-capital/mapa-de-capital.pem bitnami@3.130.120.185 'echo "## MEMERY INFO ##";free -h | grep "total"; free -h | grep "Mem:";echo;echo "## DISK INFO ##";df -h | grep "Filesystem";df -h | grep "/dev/xvda1 "'
     else
     echo "ERROR: No se encuentra el llave privada para endeavorcampus.com en el directorio ~/Documents/AWS/mapa-capital/".
     fi
+    if [ $(ssh -i ~/Documents/AWS/mapa-capital/mapa-de-capital.pem bitnami@3.130.120.185 'echo df -h | grep "Filesystem";df -h | grep "/dev/xvda1 " | tr -s " " | cut -d " " -f 5 | sed "s/%//"') -gt "20" ]; then
+        echo
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "PELIGRO: POCO ESPACIO EN EL DISCO"
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    fi
+
 }
 EXIT=1
 OPCION="1"
